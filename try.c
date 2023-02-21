@@ -14,7 +14,7 @@ int main(void)
 
     while (should_run)
     {
-        printf("osh> ");
+        printf(" $(osh)> ");
         fflush(stdout);
 
         fgets(command, MAX_LINE, stdin);
