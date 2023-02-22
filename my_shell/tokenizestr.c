@@ -1,8 +1,15 @@
 #include "shell.h"
 
+/**
+ * tokenize_string: breaks down a string into tokens
+ * Description - takes a string separates into tokens
+ * determined by @TOKEN_DELIM
+ * @str: string
+ * Return - an array of string tokens
+ */
 char **tokenize_string(char *str)
 {
-    int bufsize = LSH_TOK_BUFSIZE, position = 0;
+    int bufsize = TOKEN_BUFSIZE, position = 0;
     char **tokens = malloc(bufsize * sizeof(char *));
     char *token, **tokens_backup;
 
@@ -12,7 +19,7 @@ char **tokenize_string(char *str)
         exit(EXIT_FAILURE);
     }
 
-    token = strtok(str, LSH_TOK_DELIM);
+    token = strtok(str, TOKEN_DELIM);
     while (token != NULL)
     {
         tokens[position] = token;
@@ -20,7 +27,7 @@ char **tokenize_string(char *str)
 
         if (position >= bufsize)
         {
-            bufsize += LSH_TOK_BUFSIZE;
+            bufsize += TOKEN_BUFSIZE;
             tokens_backup = tokens;
             tokens = realloc(tokens, bufsize * sizeof(char *));
             if (!tokens)
@@ -31,9 +38,8 @@ char **tokenize_string(char *str)
             }
         }
 
-        token = strtok(NULL, LSH_TOK_DELIM);
+        token = strtok(NULL, TOKEN_DELIM);
     }
     tokens[position] = NULL;
-    printf(">> %d\n", position);
     return tokens;
 }

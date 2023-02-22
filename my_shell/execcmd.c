@@ -11,22 +11,20 @@ int execute_cmd(char **args)
     pid = fork();
     if (pid == CHILDPROCESS)
     {
-        // Child process
+        /* Child process */
         if (execvp(args[0], args) == -1)
         {
-            perror("command error: "); // COULDN'T EXECUTE ARGUMENT
+            perror("command error: "); /* COULDN'T EXECUTE ARGUMENT */
         }
-        printf("Are we still in the child process?\n");
         exit(EXIT_FAILURE);
     }
     else if (pid == -1)
     {
-        // Error forking
         perror("fork error: ");
     }
     else
     {
-        // Parent process
+        /* Parent process */
         wait(&status);
     }
 

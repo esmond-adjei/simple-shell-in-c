@@ -1,8 +1,8 @@
 #ifndef SHELL_H
 #define SHELL_H
 
-#define LSH_TOK_BUFSIZE 64
-#define LSH_TOK_DELIM " \t\n\a"
+#define TOKEN_BUFSIZE 64
+#define TOKEN_DELIM " \t\n\a"
 
 #include <stdio.h>
 #include <stdlib.h>

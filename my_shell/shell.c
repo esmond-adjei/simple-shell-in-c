@@ -1,7 +1,10 @@
 #include <unistd.h>
 #include "shell.h"
 
-int main(int argc, char **argv)
+/**
+ * Return: 0
+ */
+int main(void)
 {
 	size_t len;
 	char *inputcmd = NULL;
